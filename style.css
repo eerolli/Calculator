@@ -1,0 +1,28 @@
+body{
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    width: 25rem;
+    height: 20rem;
+    border: 2px solid black;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #80CED7;
+}
+
+.calculator .output{
+    grid-column: span 4;
+}
+
+.output{
+    font-size: 18px;
+    text-align: right;
+}
