@@ -37,3 +37,14 @@ function operate(operator, a, b){
         divide(a, b);
     }
 }
+
+//function to clear output screen
+function clearOutput(){
+    previous.innerText = "";
+    current.innerText = "";
+}
+
+//calls function to clear screen on a click
+clearBtn.addEventListener("click", ()=>{
+    clearOutput();
+})
