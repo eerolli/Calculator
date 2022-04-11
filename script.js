@@ -1,10 +1,11 @@
-const numberBtns = document.querySelectorAll("[data-number]");
-const operationBtns = document.querySelectorAll("[data-operation]");
-const equalsBtn = document.querySelector("[data-equals]");
-const clearBtn = document.querySelector("[data-clear]");
-const deleteBtn = document.querySelector("[data-delete]");
-const previous = document.querySelector("[data-previous]");
-const current = document.querySelector("[data-current]");
+const numberBtns = document.querySelectorAll(".number");
+const operationBtns = document.querySelectorAll(".operator");
+const equalsBtn = document.querySelector(".equals");
+const clearBtn = document.querySelector(".clear");
+const deleteBtn = document.querySelector(".delete");
+const previous = document.querySelector(".previous");
+const current = document.querySelector(".current");
+
 
 
 function add(a, b) {
@@ -47,4 +48,12 @@ function clearOutput(){
 //calls function to clear screen on a click
 clearBtn.addEventListener("click", ()=>{
     clearOutput();
+})
+
+
+//add number to screen on click
+numberBtns.forEach(button => {
+    button.addEventListener('click', ()=>{
+        current.innerText = button.innerText;
+    })
 })
