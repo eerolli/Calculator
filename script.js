@@ -24,20 +24,6 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(operator, a, b){
-    if(operator === "+"){
-        add(a, b);
-    }
-    else if(operator === "-"){
-        subtract(a, b);
-    }
-    else if(operator === "*"){
-        multiply(a, b);
-    }
-    else if(operator === "/"){
-        divide(a, b);
-    }
-}
 
 //function to clear output screen
 function clearOutput(){
@@ -54,6 +40,14 @@ clearBtn.addEventListener("click", ()=>{
 //add number to screen on click
 numberBtns.forEach(button => {
     button.addEventListener('click', ()=>{
-        current.innerText = button.innerText;
+        current.innerText += button.innerText;
+    })
+})
+
+//when pressing an operator button, the current operand is moved to the previous operand place
+operationBtns.forEach(button =>{
+    button.addEventListener('click', ()=>{
+        previous.innerText = current.innerText;
+        current.innerText = "";
     })
 })
