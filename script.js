@@ -21,7 +21,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    return a / ba
 }
 
 
@@ -50,4 +50,9 @@ operationBtns.forEach(button =>{
         previous.innerText = current.innerText;
         current.innerText = "";
     })
+})
+
+//deletes last number of the current operand on click
+deleteBtn.addEventListener('click', ()=>{
+    current.innerText = current.innerText.slice(0, -1);
 })
