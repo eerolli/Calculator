@@ -5,6 +5,7 @@ const clearBtn = document.querySelector(".clear");
 const deleteBtn = document.querySelector(".delete");
 const previous = document.querySelector(".previous");
 const current = document.querySelector(".current");
+const operatorDisplay = document.querySelector(".operator-display");
 
 
 
@@ -21,7 +22,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / ba
+    return a / b
 }
 
 
@@ -29,6 +30,7 @@ function divide(a, b) {
 function clearOutput(){
     previous.innerText = "";
     current.innerText = "";
+    operatorDisplay.innerText = "";
 }
 
 //calls function to clear screen on a click
@@ -49,6 +51,7 @@ operationBtns.forEach(button =>{
     button.addEventListener('click', ()=>{
         previous.innerText = current.innerText;
         current.innerText = "";
+        operatorDisplay.innerText = button.innerText;
     })
 })
 
@@ -56,3 +59,4 @@ operationBtns.forEach(button =>{
 deleteBtn.addEventListener('click', ()=>{
     current.innerText = current.innerText.slice(0, -1);
 })
+
