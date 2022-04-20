@@ -57,7 +57,12 @@ equalsBtn.addEventListener('click', ()=>{
     if (operatorDisplay.innerText === "/") {
         result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
-
+    
+    //Display error message if user tries to divide by 0
+    if (secondNumber === "0" && operatorDisplay.innerText === "/") {
+        errorMessage();
+    }
+    
     operate();
 })
 
@@ -70,4 +75,10 @@ deleteBtn.addEventListener('click', ()=>{
 function operate(){
     clearOutput();
     current.innerText = result;
+}
+
+
+function errorMessage(){
+    clearOutput();
+    result = "Division by 0 impossible";
 }
