@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
 body{
     box-sizing: border-box;
     height: 100vh;
@@ -8,7 +15,7 @@ body{
     margin: 0;
 }
 
-.calculator{
+.calculator {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 5px;
@@ -20,11 +27,8 @@ body{
     background-color: #80CED7;
 }
 
-.calculator .output{
-    grid-column: span 4;
-}
-
 .output{
+    grid-column: span 4;
     font-size: 25px;
     color: #13315C;
     text-align: right;
@@ -33,6 +37,10 @@ body{
     flex-direction: column;
     justify-content: space-between;
     padding: 3px;
+}
+
+.output > div {
+    height: 28px;
 }
 
 .span-two{
