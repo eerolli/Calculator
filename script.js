@@ -6,24 +6,9 @@ const deleteBtn = document.querySelector(".delete");
 const previous = document.querySelector(".previous");
 const current = document.querySelector(".current");
 const operatorDisplay = document.querySelector(".operator-display");
-
-
-
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b){
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b
-}
+let firstNumber = 0;
+let secondNumber = 0;
+let result;
 
 
 //function to clear output screen
@@ -50,9 +35,30 @@ numberBtns.forEach(button => {
 operationBtns.forEach(button =>{
     button.addEventListener('click', ()=>{
         previous.innerText = current.innerText;
+        firstNumber = previous.innerText;
         current.innerText = "";
         operatorDisplay.innerText = button.innerText;
     })
+})
+
+
+//calculates result based on chosen operator
+equalsBtn.addEventListener('click', ()=>{
+    secondNumber = current.innerText;
+    if (operatorDisplay.innerText === "+") {
+        result = parseFloat(firstNumber) + parseFloat(secondNumber);
+    }
+    if (operatorDisplay.innerText === "-") {
+        result = parseFloat(firstNumber) - parseFloat(secondNumber);
+    }
+    if (operatorDisplay.innerText === "*") {
+        result = parseFloat(firstNumber) * parseFloat(secondNumber);
+    }
+    if (operatorDisplay.innerText === "/") {
+        result = parseFloat(firstNumber) / parseFloat(secondNumber);
+    }
+
+    operate();
 })
 
 //deletes last number of the current operand on click
@@ -60,3 +66,8 @@ deleteBtn.addEventListener('click', ()=>{
     current.innerText = current.innerText.slice(0, -1);
 })
 
+//displays result
+function operate(){
+    clearOutput();
+    current.innerText = result;
+}
