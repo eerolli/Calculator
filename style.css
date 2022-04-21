@@ -50,3 +50,24 @@ body{
 button:hover {
     cursor: pointer;
 }
+
+button {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.equals {
+    background-color: #06D6A0;
+}
+
+.clear {
+    background-color: #EF476F;
+}
+
+.delete {
+    background-color: #FFD166;
+}
+
+.operator {
+    background-color: #FFD9DA;
+}
