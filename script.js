@@ -6,6 +6,7 @@ const deleteBtn = document.querySelector(".delete");
 const previous = document.querySelector(".previous");
 const current = document.querySelector(".current");
 const operatorDisplay = document.querySelector(".operator-display");
+let decimalBtn = document.querySelector(".decimal");
 let firstNumber = 0;
 let secondNumber = 0;
 let result;
@@ -27,6 +28,13 @@ clearBtn.addEventListener("click", ()=>{
 //add number to screen on click
 numberBtns.forEach(button => {
     button.addEventListener('click', ()=>{
+        //disables decimal button if there already is a decimal point in the current number
+        if (button.classList.contains("decimal")) {
+            if (current.innerText.includes(".")) {
+                button.classList.add("disabled")
+                current.innerText = current.innerText;
+            }
+        }
         current.innerText += button.innerText;
     })
 })
@@ -38,6 +46,8 @@ operationBtns.forEach(button =>{
         firstNumber = previous.innerText;
         current.innerText = "";
         operatorDisplay.innerText = button.innerText;
+        //ables decimal button once an operator button is pressed
+        removeDisabled();
     })
 })
 
@@ -81,4 +91,9 @@ function operate(){
 function errorMessage(){
     clearOutput();
     result = "Division by 0 impossible";
+}
+
+//function to able decimal button
+function removeDisabled(){
+    decimalBtn.classList.remove("disabled");
 }
