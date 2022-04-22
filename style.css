@@ -71,7 +71,3 @@ button {
 .operator {
     background-color: #FFD9DA;
 }
-
-.disabled {
-    pointer-events: none;
-}

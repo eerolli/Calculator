@@ -17,6 +17,7 @@ function clearOutput(){
     previous.innerText = "";
     current.innerText = "";
     operatorDisplay.innerText = "";
+    removeDisabled();
 }
 
 //calls function to clear screen on a click
@@ -27,16 +28,13 @@ clearBtn.addEventListener("click", ()=>{
 
 //add number to screen on click
 numberBtns.forEach(button => {
-    button.addEventListener('click', ()=>{
-        //disables decimal button if there already is a decimal point in the current number
-        if (button.classList.contains("decimal")) {
-            if (current.innerText.includes(".")) {
-                button.classList.add("disabled")
-                current.innerText = current.innerText;
-            }
-        }
+    button.addEventListener('click', ()=>{     
         current.innerText += button.innerText;
     })
+})
+
+decimalBtn.addEventListener('click', ()=>{
+    addDecimal();
 })
 
 //when pressing an operator button, the current operand is moved to the previous operand place
@@ -46,8 +44,7 @@ operationBtns.forEach(button =>{
         firstNumber = previous.innerText;
         current.innerText = "";
         operatorDisplay.innerText = button.innerText;
-        //ables decimal button once an operator button is pressed
-        removeDisabled();
+
     })
 })
 
@@ -84,7 +81,7 @@ deleteBtn.addEventListener('click', ()=>{
 //displays result
 function operate(){
     clearOutput();
-    current.innerText = result;
+    current.innerText = result.toFixed(4);
 }
 
 
@@ -93,7 +90,9 @@ function errorMessage(){
     result = "Division by 0 impossible";
 }
 
-//function to able decimal button
-function removeDisabled(){
-    decimalBtn.classList.remove("disabled");
+//
+function addDecimal(){
+    if (!current.innerText.includes(".")) {
+        current.innerText += ".";                
+    }
 }
