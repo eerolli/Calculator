@@ -17,7 +17,6 @@ function clearOutput(){
     previous.innerText = "";
     current.innerText = "";
     operatorDisplay.innerText = "";
-    removeDisabled();
 }
 
 //calls function to clear screen on a click
@@ -70,7 +69,7 @@ equalsBtn.addEventListener('click', ()=>{
         errorMessage();
     }
     
-    operate();
+    displayResult();
 })
 
 //deletes last number of the current operand on click
@@ -79,9 +78,10 @@ deleteBtn.addEventListener('click', ()=>{
 })
 
 //displays result
-function operate(){
+function displayResult(){
     clearOutput();
-    current.innerText = result.toFixed(4);
+    //rounds the result in case of a ridiculous number of decimals
+    current.innerText = Math.round(result * 10000) / 10000;
 }
 
 
