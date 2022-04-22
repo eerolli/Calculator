@@ -33,7 +33,7 @@ numberBtns.forEach(button => {
 })
 
 decimalBtn.addEventListener('click', ()=>{
-    addDecimal();
+    addDecimal();    
 })
 
 //when pressing an operator button, the current operand is moved to the previous operand place
@@ -68,8 +68,11 @@ equalsBtn.addEventListener('click', ()=>{
     if (secondNumber === "0" && operatorDisplay.innerText === "/") {
         errorMessage();
     }
-    
-    displayResult();
+
+    //pressing equals button does nothing if either operand is empty
+    if (current.innerText != "" && previous.innerText != "") {
+        displayResult();
+    }
 })
 
 //deletes last number of the current operand on click
