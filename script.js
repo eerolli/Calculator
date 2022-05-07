@@ -6,11 +6,47 @@ const deleteBtn = document.querySelector(".delete");
 const previous = document.querySelector(".previous");
 const current = document.querySelector(".current");
 const operatorDisplay = document.querySelector(".operator-display");
-let decimalBtn = document.querySelector(".decimal");
-let firstNumber = 0;
-let secondNumber = 0;
+const decimalBtn = document.querySelector(".decimal");
+let firstNumber;
+let secondNumber;
 let result;
 
+
+//displays result
+function displayResult(){
+    clearOutput();
+    //rounds the result in case of a ridiculous number of decimals
+    current.innerText = Math.round(result * 10000) / 10000;
+}
+
+function operate(){
+    let first = parseFloat(firstNumber);
+    let second = parseFloat(secondNumber);
+    if (operatorDisplay.innerText === "+") {
+        result = first + second;
+    }
+    if (operatorDisplay.innerText === "-") {
+        result = first - second;
+    }
+    if (operatorDisplay.innerText === "*") {
+        result = first * second;
+    }
+    if (operatorDisplay.innerText === "/") {
+        result = first / second;
+    }
+}
+
+function errorMessage(){
+    clearOutput();
+    current.innerText = "Division by 0 impossible";
+}
+
+//adds decimal point
+function addDecimal(){
+    if (!current.innerText.includes(".")) {
+        current.innerText += ".";                
+    }
+}
 
 //function to clear output screen
 function clearOutput(){
@@ -20,9 +56,7 @@ function clearOutput(){
 }
 
 //calls function to clear screen on a click
-clearBtn.addEventListener("click", ()=>{
-    clearOutput();
-})
+clearBtn.addEventListener("click", clearOutput);
 
 
 //add number to screen on click
@@ -32,18 +66,16 @@ numberBtns.forEach(button => {
     })
 })
 
-decimalBtn.addEventListener('click', ()=>{
-    addDecimal();    
-})
+decimalBtn.addEventListener('click', addDecimal);
 
 //when pressing an operator button, the current operand is moved to the previous operand place
 operationBtns.forEach(button =>{
     button.addEventListener('click', ()=>{
+        chainOperator();
         previous.innerText = current.innerText;
         firstNumber = previous.innerText;
-        current.innerText = "";
+        current.innerText = "";   
         operatorDisplay.innerText = button.innerText;
-
     })
 })
 
@@ -51,19 +83,8 @@ operationBtns.forEach(button =>{
 //calculates result based on chosen operator
 equalsBtn.addEventListener('click', ()=>{
     secondNumber = current.innerText;
-    if (operatorDisplay.innerText === "+") {
-        result = parseFloat(firstNumber) + parseFloat(secondNumber);
-    }
-    if (operatorDisplay.innerText === "-") {
-        result = parseFloat(firstNumber) - parseFloat(secondNumber);
-    }
-    if (operatorDisplay.innerText === "*") {
-        result = parseFloat(firstNumber) * parseFloat(secondNumber);
-    }
-    if (operatorDisplay.innerText === "/") {
-        result = parseFloat(firstNumber) / parseFloat(secondNumber);
-    }
-    
+    operate();
+
     //Display error message if user tries to divide by 0
     if (secondNumber === "0" && operatorDisplay.innerText === "/") {
         errorMessage();
@@ -79,23 +100,3 @@ equalsBtn.addEventListener('click', ()=>{
 deleteBtn.addEventListener('click', ()=>{
     current.innerText = current.innerText.slice(0, -1);
 })
-
-//displays result
-function displayResult(){
-    clearOutput();
-    //rounds the result in case of a ridiculous number of decimals
-    current.innerText = Math.round(result * 10000) / 10000;
-}
-
-
-function errorMessage(){
-    clearOutput();
-    result = "Division by 0 impossible";
-}
-
-//
-function addDecimal(){
-    if (!current.innerText.includes(".")) {
-        current.innerText += ".";                
-    }
-}

@@ -24,7 +24,7 @@ body{
     border: 2px solid black;
     padding: 1rem;
     border-radius: 10px;
-    background-color: #80CED7;
+    background-color: #DB5ABA;
 }
 
 .output{
@@ -61,13 +61,14 @@ button {
 }
 
 .clear {
-    background-color: #EF476F;
+    background-color: #EE6055;
 }
 
 .delete {
-    background-color: #FFD166;
+    background-color: #FFDC5E;
 }
 
 .operator {
-    background-color: #FFD9DA;
+    background-color: #001242;
+    color: #E5DADA;
 }
