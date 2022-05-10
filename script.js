@@ -55,6 +55,20 @@ function clearOutput(){
     operatorDisplay.innerText = "";
 }
 
+//function calls the operate function
+function equals() {
+    secondNumber = current.innerText;
+    operate();
+    //Display error message if user tries to divide by 0
+    if (secondNumber === "0" && operatorDisplay.innerText === "/") {
+        errorMessage();
+    }
+    //pressing equals button does nothing if either operand is empty
+    if (current.innerText != "" && previous.innerText != "") {
+        displayResult();
+    }
+}
+
 //calls function to clear screen on a click
 clearBtn.addEventListener("click", clearOutput);
 
@@ -71,7 +85,10 @@ decimalBtn.addEventListener('click', addDecimal);
 //when pressing an operator button, the current operand is moved to the previous operand place
 operationBtns.forEach(button =>{
     button.addEventListener('click', ()=>{
-        operate();
+        //this is for chaining operators so that the calculator only evaluates a pair of numbers at a time
+        if (operatorDisplay.innerText != "") {
+            equals();
+        }
         previous.innerText = current.innerText;
         firstNumber = previous.innerText;
         current.innerText = "";   
@@ -81,20 +98,7 @@ operationBtns.forEach(button =>{
 
 
 //calculates result based on chosen operator
-equalsBtn.addEventListener('click', ()=>{
-    secondNumber = current.innerText;
-    operate();
-
-    //Display error message if user tries to divide by 0
-    if (secondNumber === "0" && operatorDisplay.innerText === "/") {
-        errorMessage();
-    }
-
-    //pressing equals button does nothing if either operand is empty
-    if (current.innerText != "" && previous.innerText != "") {
-        displayResult();
-    }
-})
+equalsBtn.addEventListener('click', equals);              
 
 //deletes last number of the current operand on click
 deleteBtn.addEventListener('click', ()=>{
