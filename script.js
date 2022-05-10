@@ -71,7 +71,7 @@ decimalBtn.addEventListener('click', addDecimal);
 //when pressing an operator button, the current operand is moved to the previous operand place
 operationBtns.forEach(button =>{
     button.addEventListener('click', ()=>{
-        chainOperator();
+        operate();
         previous.innerText = current.innerText;
         firstNumber = previous.innerText;
         current.innerText = "";   

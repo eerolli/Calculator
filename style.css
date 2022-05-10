@@ -54,21 +54,9 @@ button:hover {
 button {
     font-weight: bold;
     font-size: 20px;
+    background-color: aqua;
 }
 
-.equals {
-    background-color: #06D6A0;
-}
-
-.clear {
-    background-color: #EE6055;
-}
-
-.delete {
-    background-color: #FFDC5E;
-}
-
-.operator {
-    background-color: #001242;
-    color: #E5DADA;
+button:hover{
+    background-color: white;
 }
